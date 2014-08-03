@@ -37,7 +37,7 @@ public class SummaryUpdateHelper {
         TrustIndicator dbTrustIndicator = dbSummary.getTrustIndicator();
 
         boolean shouldUpdateDetail = shouldUpdateDetail(requestSummaryDetail,
-                dbSummaryDetail, requestTrustIndicator, dbTrustIndicator);
+                dbSummaryDetail, requestTrustIndicator);
 
         if (shouldUpdateDetail) {
             dbSummary.setDetail(trimToNull(requestSummaryDetail));
@@ -55,8 +55,7 @@ public class SummaryUpdateHelper {
     }
 
     private boolean shouldUpdateDetail(String requestSummaryDetail, String dbSummaryDetail,
-                                       TrustIndicator requestTrustIndicator,
-                                       TrustIndicator dbTrustIndicator) {
+                                       TrustIndicator requestTrustIndicator) {
         boolean isDbDetailBlank = isNullOrEmpty(dbSummaryDetail);
         boolean isRequestDetailBlank = isNullOrEmpty(requestSummaryDetail);
         boolean isRequestAndDbDetailSame = isSame(requestSummaryDetail, dbSummaryDetail);
