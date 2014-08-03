@@ -67,11 +67,8 @@ public class SummaryUpdateHelper {
     private boolean shouldUpdateWhenBothNotBlank(String requestSummaryDetail,
                                                  String dbSummaryDetail,
                                                  TrustIndicator requestTrustIndicator) {
-        if (TRUSTED == requestTrustIndicator) {
-            return true;
-        }
-        return UNTRUSTED == requestTrustIndicator
-                && !isSame(requestSummaryDetail, dbSummaryDetail);
+        return TRUSTED == requestTrustIndicator
+                || UNTRUSTED == requestTrustIndicator && !isSame(requestSummaryDetail, dbSummaryDetail);
     }
 
     private boolean isSame(String requestSummaryDetail, String dbSummaryDetail) {
