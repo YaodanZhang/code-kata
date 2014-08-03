@@ -65,9 +65,9 @@ public class SummaryUpdateHelper {
         }
 
         boolean shouldUpdateDetail = false;
-        if (!isRequestDetailBlank && isDbDetailBlank) {
+        if (isDbDetailBlank) {
             shouldUpdateDetail = true;
-        } else if (!isRequestDetailBlank && !isRequestAndDbDetailSame) {
+        } else if (!isRequestAndDbDetailSame) {
             shouldUpdateDetail = true;
         }
         return shouldUpdateDetail;
