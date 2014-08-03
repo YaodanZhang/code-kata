@@ -81,7 +81,8 @@ public class SummaryUpdateHelper {
         } else if (!isRequestDetailBlank && isDbDetailBlank) {
             updatedIndicator = requestTrustIndicator;
         } else if (!isRequestDetailBlank) {
-            if (UNTRUSTED == dbTrustIndicator && TRUSTED == requestTrustIndicator) {
+            if ((UNTRUSTED == dbTrustIndicator || TRUSTED == dbTrustIndicator )
+                    && TRUSTED == requestTrustIndicator) {
                 updatedIndicator = TRUSTED;
             } else if (UNTRUSTED == requestTrustIndicator && !isRequestAndDbDetailSame) {
                 updatedIndicator = UNTRUSTED;
