@@ -69,6 +69,17 @@ public class SummaryUpdateHelper {
     private TrustIndicator getUpdatedIndicator(String requestSummaryDetail, String dbSummaryDetail,
                                                TrustIndicator requestTrustIndicator,
                                                TrustIndicator dbTrustIndicator) {
+        boolean shouldUpdateIndicator = shouldUpdateIndicator(requestSummaryDetail,
+                dbSummaryDetail, requestTrustIndicator);
+
+        TrustIndicator updatedIndicator = dbTrustIndicator;
+        if (shouldUpdateIndicator) {
+            updatedIndicator = requestTrustIndicator;
+        }
+        return updatedIndicator;
+    }
+
+    private boolean shouldUpdateIndicator(String requestSummaryDetail, String dbSummaryDetail, TrustIndicator requestTrustIndicator) {
         boolean shouldUpdateIndicator = false;
         boolean isDbDetailBlank = isNullOrEmpty(dbSummaryDetail);
         boolean isRequestDetailBlank = isNullOrEmpty(requestSummaryDetail);
@@ -85,12 +96,7 @@ public class SummaryUpdateHelper {
                 shouldUpdateIndicator = true;
             }
         }
-
-        TrustIndicator updatedIndicator = dbTrustIndicator;
-        if (shouldUpdateIndicator) {
-            updatedIndicator = requestTrustIndicator;
-        }
-        return updatedIndicator;
+        return shouldUpdateIndicator;
     }
 
     private boolean isSame(String requestSummaryDetail, String dbSummaryDetail) {
