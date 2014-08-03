@@ -44,7 +44,7 @@ public class SummaryUpdateHelper {
             updatedFields.put("summary", dbSummary);
         }
 
-        TrustIndicator updatedIndicator = getUpdateIndicatorAction(requestSummaryDetail,
+        TrustIndicator updatedIndicator = getUpdatedIndicator(requestSummaryDetail,
                 dbSummaryDetail, requestTrustIndicator, dbTrustIndicator);
 
         dbSummary.setTrustIndicator(updatedIndicator);
@@ -65,9 +65,9 @@ public class SummaryUpdateHelper {
         return isDbDetailBlank || !isSame(requestSummaryDetail, dbSummaryDetail);
     }
 
-    private TrustIndicator getUpdateIndicatorAction(String requestSummaryDetail, String dbSummaryDetail,
-                                                    TrustIndicator requestTrustIndicator,
-                                                    TrustIndicator dbTrustIndicator) {
+    private TrustIndicator getUpdatedIndicator(String requestSummaryDetail, String dbSummaryDetail,
+                                               TrustIndicator requestTrustIndicator,
+                                               TrustIndicator dbTrustIndicator) {
         TrustIndicator updatedIndicator = dbTrustIndicator;
 
         boolean isDbDetailBlank = isNullOrEmpty(dbSummaryDetail);
