@@ -70,19 +70,14 @@ public class SummaryUpdateHelper {
             }
         } else if (!isRequestDetailBlank && isDbDetailBlank) {
             shouldUpdateDetail = true;
-        } else if (!isRequestDetailBlank) {
-            if (TRUSTED == dbTrustIndicator && TRUSTED == requestTrustIndicator
-                    && !isRequestAndDbDetailSame) {
+        } else if (!isRequestDetailBlank && !isRequestAndDbDetailSame) {
+            if (TRUSTED == dbTrustIndicator && TRUSTED == requestTrustIndicator) {
                 shouldUpdateDetail = true;
             } else if (UNTRUSTED == dbTrustIndicator && TRUSTED == requestTrustIndicator) {
-                if (!isRequestAndDbDetailSame) {
-                    shouldUpdateDetail = true;
-                }
-            } else if (UNTRUSTED == dbTrustIndicator && UNTRUSTED == requestTrustIndicator
-                    && !isRequestAndDbDetailSame) {
                 shouldUpdateDetail = true;
-            } else if (TRUSTED == dbTrustIndicator && UNTRUSTED == requestTrustIndicator
-                    && !isRequestAndDbDetailSame) {
+            } else if (UNTRUSTED == dbTrustIndicator && UNTRUSTED == requestTrustIndicator) {
+                shouldUpdateDetail = true;
+            } else if (TRUSTED == dbTrustIndicator && UNTRUSTED == requestTrustIndicator) {
                 shouldUpdateDetail = true;
             }
         }
