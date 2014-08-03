@@ -2,6 +2,7 @@ package com.thoughtworks.kata.refactor;
 
 import java.util.Map;
 
+import static com.google.common.base.Strings.isNullOrEmpty;
 import static com.thoughtworks.kata.refactor.TrustIndicator.TRUSTED;
 import static com.thoughtworks.kata.refactor.TrustIndicator.UNTRUSTED;
 
@@ -61,24 +62,11 @@ public class SummaryUpdateHelper {
         updateAction = new UpdateAction();
         updateAction.updatedTrustIndicator = dbTrustIndicator;
 
-        if (null == dbSummaryDetail || "".equals(dbSummaryDetail)) {
-            isDbDetailBlank = true;
-        } else {
-            isDbDetailBlank = false;
-        }
+        isDbDetailBlank = isNullOrEmpty(dbSummaryDetail);
 
-        if (null == requestSummaryDetail || "".equals(requestSummaryDetail)) {
-            isRequestDetailBlank = true;
-        } else {
-            isRequestDetailBlank = false;
-        }
+        isRequestDetailBlank = isNullOrEmpty(requestSummaryDetail);
 
-        if (null != requestSummaryDetail && null != dbSummaryDetail
-                && requestSummaryDetail.equalsIgnoreCase(dbSummaryDetail)) {
-            isRequestAndDbDetailSame = true;
-        } else {
-            isRequestAndDbDetailSame = false;
-        }
+        isRequestAndDbDetailSame = isSame(requestSummaryDetail, dbSummaryDetail);
 
         if (isRequestDetailBlank && !isDbDetailBlank && TRUSTED == requestTrustIndicator) {
             if (TRUSTED == dbTrustIndicator) {
@@ -90,7 +78,7 @@ public class SummaryUpdateHelper {
         } else if (!isRequestDetailBlank && isDbDetailBlank) {
             updateAction.updateDetail = true;
             updateAction.updatedTrustIndicator = requestTrustIndicator;
-        } else if (!isRequestDetailBlank && !isDbDetailBlank) {
+        } else if (!isRequestDetailBlank) {
             if (TRUSTED == dbTrustIndicator && TRUSTED == requestTrustIndicator
                     && !isRequestAndDbDetailSame) {
                 updateAction.updateDetail = true;
@@ -109,6 +97,11 @@ public class SummaryUpdateHelper {
             }
         }
         return updateAction;
+    }
+
+    private boolean isSame(String requestSummaryDetail, String dbSummaryDetail) {
+        return null != requestSummaryDetail && null != dbSummaryDetail
+                && requestSummaryDetail.equalsIgnoreCase(dbSummaryDetail);
     }
 
     private static String trimToNull(String target) {
