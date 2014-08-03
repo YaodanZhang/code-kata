@@ -37,7 +37,7 @@ public class SummaryUpdateHelper {
         String dbSummaryDetail = dbSummary.getDetail();
         TrustIndicator dbTrustIndicator = dbSummary.getTrustIndicator();
 
-        boolean shouldUpdateDetail = shouldUpdateDetail(requestSummaryDetail,
+        boolean shouldUpdateDetail = shouldUpdateIndicator(requestSummaryDetail,
                 dbSummaryDetail, requestTrustIndicator);
 
         if (shouldUpdateDetail && !Objects.equals(dbSummaryDetail, requestSummaryDetail)) {
