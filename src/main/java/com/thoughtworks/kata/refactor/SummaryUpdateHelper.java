@@ -75,7 +75,7 @@ public class SummaryUpdateHelper {
         boolean isRequestAndDbDetailSame = isSame(requestSummaryDetail, dbSummaryDetail);
 
         if (isRequestDetailBlank && !isDbDetailBlank && TRUSTED == requestTrustIndicator) {
-            if (UNTRUSTED == dbTrustIndicator) {
+            if (UNTRUSTED == dbTrustIndicator || TRUSTED == dbTrustIndicator) {
                 updatedIndicator = TRUSTED;
             }
         } else if (!isRequestDetailBlank && isDbDetailBlank) {
