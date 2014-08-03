@@ -1,6 +1,7 @@
 package com.thoughtworks.kata.refactor;
 
 import java.util.Map;
+import java.util.Objects;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static com.thoughtworks.kata.refactor.TrustIndicator.TRUSTED;
@@ -39,7 +40,7 @@ public class SummaryUpdateHelper {
         boolean shouldUpdateDetail = shouldUpdateDetail(requestSummaryDetail,
                 dbSummaryDetail, requestTrustIndicator);
 
-        if (shouldUpdateDetail) {
+        if (shouldUpdateDetail && !Objects.equals(dbSummaryDetail, requestSummary)) {
             dbSummary.setDetail(trimToNull(requestSummaryDetail));
             updatedFields.put("summary", dbSummary);
         }
