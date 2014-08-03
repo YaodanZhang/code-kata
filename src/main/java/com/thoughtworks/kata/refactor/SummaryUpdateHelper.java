@@ -70,11 +70,8 @@ public class SummaryUpdateHelper {
         if (TRUSTED == requestTrustIndicator) {
             return true;
         }
-        if (UNTRUSTED == requestTrustIndicator
-                && !isSame(requestSummaryDetail, dbSummaryDetail)) {
-            return true;
-        }
-        return false;
+        return UNTRUSTED == requestTrustIndicator
+                && !isSame(requestSummaryDetail, dbSummaryDetail);
     }
 
     private boolean isSame(String requestSummaryDetail, String dbSummaryDetail) {
