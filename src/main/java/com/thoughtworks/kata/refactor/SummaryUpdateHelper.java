@@ -72,7 +72,6 @@ public class SummaryUpdateHelper {
 
         boolean isDbDetailBlank = isNullOrEmpty(dbSummaryDetail);
         boolean isRequestDetailBlank = isNullOrEmpty(requestSummaryDetail);
-        boolean isRequestAndDbDetailSame = isSame(requestSummaryDetail, dbSummaryDetail);
 
         if (isRequestDetailBlank && !isDbDetailBlank && TRUSTED == requestTrustIndicator) {
             updatedIndicator = requestTrustIndicator;
@@ -81,7 +80,8 @@ public class SummaryUpdateHelper {
         } else if (!isRequestDetailBlank) {
             if (TRUSTED == requestTrustIndicator) {
                 updatedIndicator = requestTrustIndicator;
-            } else if (UNTRUSTED == requestTrustIndicator && !isRequestAndDbDetailSame) {
+            } else if (UNTRUSTED == requestTrustIndicator
+                    && !isSame(requestSummaryDetail, dbSummaryDetail)) {
                 updatedIndicator = requestTrustIndicator;
             }
         }
