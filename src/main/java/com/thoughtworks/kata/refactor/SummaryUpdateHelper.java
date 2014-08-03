@@ -53,12 +53,9 @@ public class SummaryUpdateHelper {
 
     private boolean shouldUpdate(String requestSummaryDetail, TrustIndicator requestTrustIndicator,
                                  TrustIndicator dbTrustIndicator) {
-        boolean isRequestDetailBlank = isNullOrEmpty(requestSummaryDetail);
-
-        if (isRequestDetailBlank) {
+        if (isNullOrEmpty(requestSummaryDetail)) {
             return TRUSTED == requestTrustIndicator;
         }
-
         return !(TRUSTED == dbTrustIndicator && UNTRUSTED == requestTrustIndicator);
     }
 
