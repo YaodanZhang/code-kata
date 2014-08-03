@@ -40,17 +40,16 @@ public class SummaryUpdateHelper {
         boolean shouldUpdateDetail = shouldUpdateDetail(requestSummaryDetail,
                 dbSummaryDetail, requestTrustIndicator);
 
-        if (shouldUpdateDetail && !Objects.equals(dbSummaryDetail, requestSummary)) {
+        if (shouldUpdateDetail && !Objects.equals(dbSummaryDetail, requestSummaryDetail)) {
             dbSummary.setDetail(trimToNull(requestSummaryDetail));
             updatedFields.put("summary", dbSummary);
         }
 
-        TrustIndicator updatedIndicator = getUpdatedIndicator(requestSummaryDetail,
-                dbSummaryDetail, requestTrustIndicator, dbTrustIndicator);
+        boolean shouldUpdateIndicator = shouldUpdateIndicator(requestSummaryDetail,
+                dbSummaryDetail, requestTrustIndicator);
 
-        dbSummary.setTrustIndicator(updatedIndicator);
-
-        if (updatedIndicator != dbTrustIndicator) {
+        if (shouldUpdateIndicator && dbTrustIndicator != requestTrustIndicator) {
+            dbSummary.setTrustIndicator(requestTrustIndicator);
             updatedFields.put("summary", dbSummary);
         }
     }
@@ -64,19 +63,6 @@ public class SummaryUpdateHelper {
         }
 
         return isDbDetailBlank || !isSame(requestSummaryDetail, dbSummaryDetail);
-    }
-
-    private TrustIndicator getUpdatedIndicator(String requestSummaryDetail, String dbSummaryDetail,
-                                               TrustIndicator requestTrustIndicator,
-                                               TrustIndicator dbTrustIndicator) {
-        boolean shouldUpdateIndicator = shouldUpdateIndicator(requestSummaryDetail,
-                dbSummaryDetail, requestTrustIndicator);
-
-        TrustIndicator updatedIndicator = dbTrustIndicator;
-        if (shouldUpdateIndicator) {
-            updatedIndicator = requestTrustIndicator;
-        }
-        return updatedIndicator;
     }
 
     private boolean shouldUpdateIndicator(String requestSummaryDetail, String dbSummaryDetail,
