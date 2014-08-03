@@ -57,8 +57,8 @@ public class SummaryUpdateHelper {
         boolean isDbDetailBlank = isNullOrEmpty(dbSummaryDetail);
         boolean isRequestDetailBlank = isNullOrEmpty(requestSummaryDetail);
 
-        if (isRequestDetailBlank && !isDbDetailBlank && TRUSTED == requestTrustIndicator) {
-            return true;
+        if (isRequestDetailBlank) {
+            return !isDbDetailBlank && TRUSTED == requestTrustIndicator;
         }
 
         if (!isRequestDetailBlank && isDbDetailBlank) {
