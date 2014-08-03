@@ -44,12 +44,12 @@ public class SummaryUpdateHelper {
             updatedFields.put("summary", dbSummary);
         }
 
-        UpdateAction updateIndicatorAction = getUpdateIndicatorAction(requestSummaryDetail,
+        TrustIndicator updatedIndicator = getUpdateIndicatorAction(requestSummaryDetail,
                 dbSummaryDetail, requestTrustIndicator, dbTrustIndicator);
 
-        dbSummary.setTrustIndicator(updateIndicatorAction.updatedTrustIndicator);
+        dbSummary.setTrustIndicator(updatedIndicator);
 
-        if (updateIndicatorAction.updatedTrustIndicator != dbTrustIndicator) {
+        if (updatedIndicator != dbTrustIndicator) {
             updatedFields.put("summary", dbSummary);
         }
     }
@@ -89,38 +89,30 @@ public class SummaryUpdateHelper {
         return shouldUpdateDetail;
     }
 
-    private UpdateAction getUpdateIndicatorAction(String requestSummaryDetail, String dbSummaryDetail,
-                                                  TrustIndicator requestTrustIndicator,
-                                                  TrustIndicator dbTrustIndicator) {
-        UpdateAction updateAction;
-        boolean isRequestDetailBlank;
-        boolean isDbDetailBlank;
-        boolean isRequestAndDbDetailSame;
+    private TrustIndicator getUpdateIndicatorAction(String requestSummaryDetail, String dbSummaryDetail,
+                                                    TrustIndicator requestTrustIndicator,
+                                                    TrustIndicator dbTrustIndicator) {
+        TrustIndicator updatedIndicator = dbTrustIndicator;
 
-        updateAction = new UpdateAction();
-        updateAction.updatedTrustIndicator = dbTrustIndicator;
-
-        isDbDetailBlank = isNullOrEmpty(dbSummaryDetail);
-
-        isRequestDetailBlank = isNullOrEmpty(requestSummaryDetail);
-
-        isRequestAndDbDetailSame = isSame(requestSummaryDetail, dbSummaryDetail);
+        boolean isDbDetailBlank = isNullOrEmpty(dbSummaryDetail);
+        boolean isRequestDetailBlank = isNullOrEmpty(requestSummaryDetail);
+        boolean isRequestAndDbDetailSame = isSame(requestSummaryDetail, dbSummaryDetail);
 
         if (isRequestDetailBlank && !isDbDetailBlank && TRUSTED == requestTrustIndicator) {
             if (UNTRUSTED == dbTrustIndicator) {
-                updateAction.updatedTrustIndicator = TRUSTED;
+                updatedIndicator = TRUSTED;
             }
         } else if (!isRequestDetailBlank && isDbDetailBlank) {
-            updateAction.updatedTrustIndicator = requestTrustIndicator;
+            updatedIndicator = requestTrustIndicator;
         } else if (!isRequestDetailBlank) {
             if (UNTRUSTED == dbTrustIndicator && TRUSTED == requestTrustIndicator) {
-                updateAction.updatedTrustIndicator = TRUSTED;
+                updatedIndicator = TRUSTED;
             } else if (TRUSTED == dbTrustIndicator && UNTRUSTED == requestTrustIndicator
                     && !isRequestAndDbDetailSame) {
-                updateAction.updatedTrustIndicator = UNTRUSTED;
+                updatedIndicator = UNTRUSTED;
             }
         }
-        return updateAction;
+        return updatedIndicator;
     }
 
     private boolean isSame(String requestSummaryDetail, String dbSummaryDetail) {
