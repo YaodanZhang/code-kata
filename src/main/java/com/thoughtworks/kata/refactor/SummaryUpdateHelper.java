@@ -53,7 +53,6 @@ public class SummaryUpdateHelper {
 
     private boolean shouldUpdate(String requestSummaryDetail, String dbSummaryDetail,
                                  TrustIndicator requestTrustIndicator) {
-        boolean shouldUpdate = false;
         boolean isDbDetailBlank = isNullOrEmpty(dbSummaryDetail);
         boolean isRequestDetailBlank = isNullOrEmpty(requestSummaryDetail);
 
@@ -61,15 +60,19 @@ public class SummaryUpdateHelper {
             return !isDbDetailBlank && TRUSTED == requestTrustIndicator;
         }
 
-        if (isDbDetailBlank) {
+        return isDbDetailBlank || shouldUpdateWhenBothNotBlank(requestSummaryDetail,
+                dbSummaryDetail, requestTrustIndicator);
+    }
+
+    private boolean shouldUpdateWhenBothNotBlank(String requestSummaryDetail,
+                                                 String dbSummaryDetail,
+                                                 TrustIndicator requestTrustIndicator) {
+        boolean shouldUpdate = false;
+        if (TRUSTED == requestTrustIndicator) {
             shouldUpdate = true;
-        } else {
-            if (TRUSTED == requestTrustIndicator) {
-                shouldUpdate = true;
-            } else if (UNTRUSTED == requestTrustIndicator
-                    && !isSame(requestSummaryDetail, dbSummaryDetail)) {
-                shouldUpdate = true;
-            }
+        } else if (UNTRUSTED == requestTrustIndicator
+                && !isSame(requestSummaryDetail, dbSummaryDetail)) {
+            shouldUpdate = true;
         }
         return shouldUpdate;
     }
