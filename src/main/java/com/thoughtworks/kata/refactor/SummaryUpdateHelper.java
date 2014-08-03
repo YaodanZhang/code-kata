@@ -75,14 +75,14 @@ public class SummaryUpdateHelper {
         boolean isRequestAndDbDetailSame = isSame(requestSummaryDetail, dbSummaryDetail);
 
         if (isRequestDetailBlank && !isDbDetailBlank && TRUSTED == requestTrustIndicator) {
-            updatedIndicator = TRUSTED;
+            updatedIndicator = requestTrustIndicator;
         } else if (!isRequestDetailBlank && isDbDetailBlank) {
             updatedIndicator = requestTrustIndicator;
         } else if (!isRequestDetailBlank) {
             if (TRUSTED == requestTrustIndicator) {
-                updatedIndicator = TRUSTED;
+                updatedIndicator = requestTrustIndicator;
             } else if (UNTRUSTED == requestTrustIndicator && !isRequestAndDbDetailSame) {
-                updatedIndicator = UNTRUSTED;
+                updatedIndicator = requestTrustIndicator;
             }
         }
         return updatedIndicator;
