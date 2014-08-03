@@ -79,7 +79,8 @@ public class SummaryUpdateHelper {
         return updatedIndicator;
     }
 
-    private boolean shouldUpdateIndicator(String requestSummaryDetail, String dbSummaryDetail, TrustIndicator requestTrustIndicator) {
+    private boolean shouldUpdateIndicator(String requestSummaryDetail, String dbSummaryDetail,
+                                          TrustIndicator requestTrustIndicator) {
         boolean shouldUpdateIndicator = false;
         boolean isDbDetailBlank = isNullOrEmpty(dbSummaryDetail);
         boolean isRequestDetailBlank = isNullOrEmpty(requestSummaryDetail);
