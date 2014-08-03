@@ -61,10 +61,12 @@ public class SummaryUpdateHelper {
         boolean isRequestDetailBlank = isNullOrEmpty(requestSummaryDetail);
         boolean isRequestAndDbDetailSame = isSame(requestSummaryDetail, dbSummaryDetail);
 
-        boolean shouldUpdateDetail = false;
         if (isRequestDetailBlank && !isDbDetailBlank && TRUSTED == requestTrustIndicator) {
-            shouldUpdateDetail = true;
-        } else if (!isRequestDetailBlank && isDbDetailBlank) {
+            return true;
+        }
+
+        boolean shouldUpdateDetail = false;
+        if (!isRequestDetailBlank && isDbDetailBlank) {
             shouldUpdateDetail = true;
         } else if (!isRequestDetailBlank && !isRequestAndDbDetailSame) {
             shouldUpdateDetail = true;
