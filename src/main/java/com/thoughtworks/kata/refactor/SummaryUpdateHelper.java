@@ -64,11 +64,10 @@ public class SummaryUpdateHelper {
             return !isDbDetailBlank && TRUSTED == requestTrustIndicator;
         }
 
-        boolean shouldUpdateDetail = false;
         if (isDbDetailBlank || !isRequestAndDbDetailSame) {
-            shouldUpdateDetail = true;
+            return true;
         }
-        return shouldUpdateDetail;
+        return false;
     }
 
     private TrustIndicator getUpdateIndicatorAction(String requestSummaryDetail, String dbSummaryDetail,
