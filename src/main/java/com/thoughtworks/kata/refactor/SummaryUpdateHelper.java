@@ -71,10 +71,7 @@ public class SummaryUpdateHelper {
         } else if (!isRequestDetailBlank && isDbDetailBlank) {
             shouldUpdateDetail = true;
         } else if (!isRequestDetailBlank && !isRequestAndDbDetailSame) {
-            if ((TRUSTED == dbTrustIndicator || UNTRUSTED == dbTrustIndicator)
-                    && (TRUSTED == requestTrustIndicator || UNTRUSTED == requestTrustIndicator)) {
-                shouldUpdateDetail = true;
-            }
+            shouldUpdateDetail = true;
         }
         return shouldUpdateDetail;
     }
