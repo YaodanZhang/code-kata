@@ -36,7 +36,7 @@ public class SummaryUpdateHelper {
         String dbSummaryDetail = dbSummary.getDetail();
         TrustIndicator dbTrustIndicator = dbSummary.getTrustIndicator();
 
-        UpdateAction updateDetailAction = getUpdateAction(requestSummaryDetail,
+        UpdateAction updateDetailAction = getUpdateDetailAction(requestSummaryDetail,
                 dbSummaryDetail, requestTrustIndicator, dbTrustIndicator);
 
         if (updateDetailAction.updateDetail) {
@@ -44,7 +44,7 @@ public class SummaryUpdateHelper {
             updatedFields.put("summary", dbSummary);
         }
 
-        UpdateAction updateIndicatorAction = getUpdateAction(requestSummaryDetail,
+        UpdateAction updateIndicatorAction = getUpdateIndicatorAction(requestSummaryDetail,
                 dbSummaryDetail, requestTrustIndicator, dbTrustIndicator);
 
         dbSummary.setTrustIndicator(updateIndicatorAction.updatedTrustIndicator);
@@ -54,9 +54,9 @@ public class SummaryUpdateHelper {
         }
     }
 
-    private UpdateAction shouldUpdateDetail(String requestSummaryDetail, String dbSummaryDetail,
-                                         TrustIndicator requestTrustIndicator,
-                                         TrustIndicator dbTrustIndicator) {
+    private UpdateAction getUpdateDetailAction(String requestSummaryDetail, String dbSummaryDetail,
+                                               TrustIndicator requestTrustIndicator,
+                                               TrustIndicator dbTrustIndicator) {
         UpdateAction updateAction;
         boolean isRequestDetailBlank;
         boolean isDbDetailBlank;
@@ -102,9 +102,9 @@ public class SummaryUpdateHelper {
         return updateAction;
     }
 
-    private UpdateAction getUpdateAction(String requestSummaryDetail, String dbSummaryDetail,
-                                         TrustIndicator requestTrustIndicator,
-                                         TrustIndicator dbTrustIndicator) {
+    private UpdateAction getUpdateIndicatorAction(String requestSummaryDetail, String dbSummaryDetail,
+                                                  TrustIndicator requestTrustIndicator,
+                                                  TrustIndicator dbTrustIndicator) {
         UpdateAction updateAction;
         boolean isRequestDetailBlank;
         boolean isDbDetailBlank;
