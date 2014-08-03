@@ -31,14 +31,14 @@ class SummaryUpdateHelperTest extends Specification {
         null           | null         | null      | null      | null         | null
         null           | null         | ORIGINAL  | TRUSTED   | ORIGINAL     | TRUSTED
 
-        BLANK          | TRUSTED      | null      | null      | null         | null
+        BLANK          | TRUSTED      | null      | null      | BLANK        | TRUSTED
         BLANK          | UNTRUSTED    | null      | null      | null         | null
         BLANK          | TRUSTED      | BLANK     | TRUSTED   | BLANK        | TRUSTED
-        BLANK          | TRUSTED      | BLANK     | UNTRUSTED | BLANK        | UNTRUSTED
+        BLANK          | TRUSTED      | BLANK     | UNTRUSTED | BLANK        | TRUSTED
         BLANK          | UNTRUSTED    | BLANK     | TRUSTED   | BLANK        | TRUSTED
         BLANK          | UNTRUSTED    | BLANK     | UNTRUSTED | BLANK        | UNTRUSTED
         BLANK          | TRUSTED      | EMPTY     | TRUSTED   | EMPTY        | TRUSTED
-        BLANK          | TRUSTED      | EMPTY     | UNTRUSTED | EMPTY        | UNTRUSTED
+        BLANK          | TRUSTED      | EMPTY     | UNTRUSTED | EMPTY        | TRUSTED
         BLANK          | UNTRUSTED    | EMPTY     | TRUSTED   | EMPTY        | TRUSTED
         BLANK          | UNTRUSTED    | EMPTY     | UNTRUSTED | EMPTY        | UNTRUSTED
         BLANK          | TRUSTED      | ORIGINAL  | TRUSTED   | BLANK        | TRUSTED
@@ -46,14 +46,14 @@ class SummaryUpdateHelperTest extends Specification {
         BLANK          | UNTRUSTED    | ORIGINAL  | TRUSTED   | ORIGINAL     | TRUSTED
         BLANK          | UNTRUSTED    | ORIGINAL  | UNTRUSTED | ORIGINAL     | UNTRUSTED
 
-        EMPTY          | TRUSTED      | null      | null      | null         | null
+        EMPTY          | TRUSTED      | null      | null      | BLANK        | TRUSTED
         EMPTY          | UNTRUSTED    | null      | null      | null         | null
         EMPTY          | TRUSTED      | BLANK     | TRUSTED   | BLANK        | TRUSTED
-        EMPTY          | TRUSTED      | BLANK     | UNTRUSTED | BLANK        | UNTRUSTED
+        EMPTY          | TRUSTED      | BLANK     | UNTRUSTED | BLANK        | TRUSTED
         EMPTY          | UNTRUSTED    | BLANK     | TRUSTED   | BLANK        | TRUSTED
         EMPTY          | UNTRUSTED    | BLANK     | UNTRUSTED | BLANK        | UNTRUSTED
         EMPTY          | TRUSTED      | EMPTY     | TRUSTED   | EMPTY        | TRUSTED
-        EMPTY          | TRUSTED      | EMPTY     | UNTRUSTED | EMPTY        | UNTRUSTED
+        EMPTY          | TRUSTED      | EMPTY     | UNTRUSTED | EMPTY        | TRUSTED
         EMPTY          | UNTRUSTED    | EMPTY     | TRUSTED   | EMPTY        | TRUSTED
         EMPTY          | UNTRUSTED    | EMPTY     | UNTRUSTED | EMPTY        | UNTRUSTED
         EMPTY          | TRUSTED      | ORIGINAL  | TRUSTED   | BLANK        | TRUSTED
@@ -65,11 +65,11 @@ class SummaryUpdateHelperTest extends Specification {
         ORIGINAL       | UNTRUSTED    | null      | null      | ORIGINAL     | UNTRUSTED
         ORIGINAL       | TRUSTED      | BLANK     | TRUSTED   | ORIGINAL     | TRUSTED
         ORIGINAL       | TRUSTED      | BLANK     | UNTRUSTED | ORIGINAL     | TRUSTED
-        ORIGINAL       | UNTRUSTED    | BLANK     | TRUSTED   | ORIGINAL     | UNTRUSTED
+        ORIGINAL       | UNTRUSTED    | BLANK     | TRUSTED   | BLANK        | TRUSTED
         ORIGINAL       | UNTRUSTED    | BLANK     | UNTRUSTED | ORIGINAL     | UNTRUSTED
         ORIGINAL       | TRUSTED      | EMPTY     | TRUSTED   | ORIGINAL     | TRUSTED
         ORIGINAL       | TRUSTED      | EMPTY     | UNTRUSTED | ORIGINAL     | TRUSTED
-        ORIGINAL       | UNTRUSTED    | EMPTY     | TRUSTED   | ORIGINAL     | UNTRUSTED
+        ORIGINAL       | UNTRUSTED    | EMPTY     | TRUSTED   | EMPTY        | TRUSTED
         ORIGINAL       | UNTRUSTED    | EMPTY     | UNTRUSTED | ORIGINAL     | UNTRUSTED
         ORIGINAL       | TRUSTED      | ORIGINAL  | TRUSTED   | ORIGINAL     | TRUSTED
         ORIGINAL       | TRUSTED      | ORIGINAL  | UNTRUSTED | ORIGINAL     | TRUSTED
@@ -80,15 +80,15 @@ class SummaryUpdateHelperTest extends Specification {
         UPDATED        | UNTRUSTED    | null      | null      | UPDATED      | UNTRUSTED
         UPDATED        | TRUSTED      | BLANK     | TRUSTED   | UPDATED      | TRUSTED
         UPDATED        | TRUSTED      | BLANK     | UNTRUSTED | UPDATED      | TRUSTED
-        UPDATED        | UNTRUSTED    | BLANK     | TRUSTED   | UPDATED      | UNTRUSTED
+        UPDATED        | UNTRUSTED    | BLANK     | TRUSTED   | BLANK        | TRUSTED
         UPDATED        | UNTRUSTED    | BLANK     | UNTRUSTED | UPDATED      | UNTRUSTED
         UPDATED        | TRUSTED      | EMPTY     | TRUSTED   | UPDATED      | TRUSTED
         UPDATED        | TRUSTED      | EMPTY     | UNTRUSTED | UPDATED      | TRUSTED
-        UPDATED        | UNTRUSTED    | EMPTY     | TRUSTED   | UPDATED      | UNTRUSTED
+        UPDATED        | UNTRUSTED    | EMPTY     | TRUSTED   | EMPTY        | TRUSTED
         UPDATED        | UNTRUSTED    | EMPTY     | UNTRUSTED | UPDATED      | UNTRUSTED
         UPDATED        | TRUSTED      | ORIGINAL  | TRUSTED   | UPDATED      | TRUSTED
         UPDATED        | TRUSTED      | ORIGINAL  | UNTRUSTED | UPDATED      | TRUSTED
-        UPDATED        | UNTRUSTED    | ORIGINAL  | TRUSTED   | UPDATED      | UNTRUSTED
+        UPDATED        | UNTRUSTED    | ORIGINAL  | TRUSTED   | ORIGINAL     | TRUSTED
         UPDATED        | UNTRUSTED    | ORIGINAL  | UNTRUSTED | UPDATED      | UNTRUSTED
     }
 
