@@ -128,8 +128,4 @@ public class SummaryUpdateHelper {
         return "".equals(trimmed) ? null : trimmed;
     }
 
-    private class UpdateAction {
-        public boolean updateDetail;
-        public TrustIndicator updatedTrustIndicator;
-    }
 }
