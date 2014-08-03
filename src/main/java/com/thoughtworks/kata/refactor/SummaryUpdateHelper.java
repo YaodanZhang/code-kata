@@ -74,9 +74,6 @@ public class SummaryUpdateHelper {
             if ((TRUSTED == dbTrustIndicator || UNTRUSTED == dbTrustIndicator)
                     && (TRUSTED == requestTrustIndicator || UNTRUSTED == requestTrustIndicator)) {
                 shouldUpdateDetail = true;
-            } else if ((TRUSTED == dbTrustIndicator || UNTRUSTED == dbTrustIndicator)
-                    && UNTRUSTED == requestTrustIndicator) {
-                shouldUpdateDetail = true;
             }
         }
         return shouldUpdateDetail;
