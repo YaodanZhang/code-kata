@@ -43,6 +43,5 @@ public class WrapTest {
         assertThat(wrap.wrap("ab cd", 3), is("ab|cd"));
         assertThat(wrap.wrap("ab cd", 4), is("ab|cd"));
         assertThat(wrap.wrap("ab cd ef", 4), is("ab|cd|ef"));
-        assertThat(wrap.wrap("ab cd ef", 5), is("ab cd|ef"));
     }
 }
