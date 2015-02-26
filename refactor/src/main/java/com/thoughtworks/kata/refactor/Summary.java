@@ -2,8 +2,8 @@ package com.thoughtworks.kata.refactor;
 
 import com.google.common.base.Objects;
 
+import static com.google.common.base.MoreObjects.toStringHelper;
 import static com.google.common.base.Objects.equal;
-import static com.google.common.base.Objects.toStringHelper;
 import static com.thoughtworks.kata.refactor.TrustIndicator.UNTRUSTED;
 
 public class Summary {
