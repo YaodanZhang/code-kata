@@ -1,4 +1,4 @@
 rootProject.name = 'code-kata'
 
 include 'bowling', 'guess-number', 'kongwei', 'measurement', 'parking-lot', 'poker', 'prime',
-        'refactor', 'string-calculator', 'word-wrap', 'fizz-buzz-whizz', 'java8'
+        'refactor', 'string-calculator', 'word-wrap', 'fizz-buzz-whizz', 'java8', 'parallel', 'leet'
