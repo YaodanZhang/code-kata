@@ -3,4 +3,5 @@ dependencies {
     testCompile('junit:junit:4.11') {
         exclude group: 'org.hamcrest'
     }
+    testCompile 'org.mockito:mockito-all:2.0.2-beta'
 }
