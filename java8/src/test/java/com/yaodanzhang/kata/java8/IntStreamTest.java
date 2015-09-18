@@ -77,7 +77,7 @@ public class IntStreamTest {
     }
 
     @Test
-    public void should_(){
+    public void should_filter_twice(){
         assertThat(stream.filter(x -> x % 2 == 0)
                 .filter(x -> x % 3 == 0)
                 .first(), is(of(6)));
