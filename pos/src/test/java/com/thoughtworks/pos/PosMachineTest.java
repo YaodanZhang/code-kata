@@ -1,5 +1,6 @@
 package com.thoughtworks.pos;
 
+import com.thoughtworks.pos.Result.Record;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,8 +22,8 @@ public class PosMachineTest {
 
     @Test
     public void should_get_0_given_empty_cart() {
-        int result = machine.calculate(Arrays.<Item>asList());
-        assertThat(result, is(0));
+        Result result = machine.calculate(Arrays.<Item>asList());
+        assertThat(result, is(new Result(Arrays.<Record>asList())));
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -37,20 +38,23 @@ public class PosMachineTest {
 
     @Test
     public void should_calculate_given_1_item() {
-        int result = machine.calculate(asList(new Item("I1", 1)));
-        assertThat(result, is(40));
+        Result result = machine.calculate(asList(new Item("I1", 1)));
+        assertThat(result, is(new Result(asList(new Record(new Item("I1", 1), 40, 40)))));
     }
 
     @Test
     public void should_calculate_given_1_item_with_multiple_amount() {
-        int result = machine.calculate(asList(new Item("I1", 2)));
-        assertThat(result, is(80));
+        Result result = machine.calculate(asList(new Item("I1", 2)));
+        assertThat(result, is(new Result(asList(new Record(new Item("I1", 2), 40, 80)))));
     }
 
     @Test
     public void should_calculate_given_2_items() {
-        int result = machine.calculate(asList(new Item("I1", 2), new Item("I2", 1)));
-        assertThat(result, is(110));
+        Result result = machine.calculate(asList(new Item("I1", 2), new Item("I2", 1)));
+        assertThat(result, is(new Result(asList(
+                new Record(new Item("I1", 2), 40, 80),
+                new Record(new Item("I2", 1), 30, 30)
+        ))));
     }
 
     private static HashMap<String, Integer> initAllGoods() {

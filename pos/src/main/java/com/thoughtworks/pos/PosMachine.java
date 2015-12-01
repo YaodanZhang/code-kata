@@ -1,5 +1,8 @@
 package com.thoughtworks.pos;
 
+import com.thoughtworks.pos.Result.Record;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -10,13 +13,14 @@ public final class PosMachine {
         this.allGoods = allGoods;
     }
 
-    public int calculate(List<Item> items) {
-        int sum = 0;
+    public Result calculate(List<Item> items) {
+        List<Record> resultRecords = new ArrayList<Record>();
         for (Item item : items) {
             validateItem(item);
-            sum += allGoods.get(item.getBarcode()) * item.getAmount();
+            int price = allGoods.get(item.getBarcode());
+            resultRecords.add(new Record(item, price, price * item.getAmount()));
         }
-        return sum;
+        return new Result(resultRecords);
     }
 
     private void validateItem(Item item) {
