@@ -3,6 +3,9 @@ package com.yaodanzhang.kata.java8;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import static com.yaodanzhang.kata.java8.IntStream.range;
 import static com.yaodanzhang.kata.java8.Optional.of;
 import static org.hamcrest.Matchers.is;
@@ -81,5 +84,15 @@ public class IntStreamTest {
         assertThat(stream.filter(x -> x % 2 == 0)
                 .filter(x -> x % 3 == 0)
                 .first(), is(of(6)));
+    }
+
+    @Test
+    public void should_() throws FileNotFoundException {
+        FileInputStream s1 = new FileInputStream
+                ("/Users/twer/Documents/development/code/code-kata/build.gradle");
+        FileInputStream s2 = new FileInputStream
+                ("/Users/twer/Documents/development/code/code-kata/build.gradle");
+        System.out.println(s1);
+        System.out.println(s2);
     }
 }
