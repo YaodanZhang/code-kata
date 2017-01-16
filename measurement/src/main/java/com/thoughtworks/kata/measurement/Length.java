@@ -26,7 +26,7 @@ public class Length extends Measurement<Length> {
         return new Length(atomValue, LengthUnit.INCH);
     }
 
-    private static enum LengthUnit implements Unit {
+    private enum LengthUnit implements Unit {
         INCH(1),
         FEET(12 * INCH.atom),
         YARD(3 * FEET.atom),
