@@ -5,11 +5,11 @@ import java.util.function.Function;
 import java.util.stream.IntStream;
 
 import static com.google.common.collect.Maps.newHashMap;
+import static com.thoughtworks.kata.bowling.Frame.FULL_SCORE;
 
+@SuppressWarnings("WeakerAccess")
 public class BowlingGame {
     private static final Map<Character, Function<Integer, Integer>> SCORES = newHashMap();
-
-    public static final int FULL_SCORE = 10;
 
     static {
         IntStream.rangeClosed(1, 9).forEach(it -> SCORES.put(Character.forDigit(it, 10), previousScore -> it));

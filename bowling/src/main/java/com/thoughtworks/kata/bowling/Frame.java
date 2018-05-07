@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.function.Function;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static com.thoughtworks.kata.bowling.BowlingGame.FULL_SCORE;
 import static java.util.Optional.ofNullable;
 
-public class Frame {
+class Frame {
 
+    static final int FULL_SCORE = 10;
     private static final int STRIKE_BONUS_ROLLS = 2;
     private static final int SPARE_BONUS_ROLLS = 1;
 
@@ -16,7 +16,7 @@ public class Frame {
     private Frame next;
     private Frame previous;
 
-    public Frame roll(int roll) {
+    Frame roll(int roll) {
         Frame frame = this;
         if (isFinished()) {
             frame = startNextFrame();
@@ -25,11 +25,11 @@ public class Frame {
         return frame;
     }
 
-    public int firstRoll() {
+    int firstRoll() {
         return scoreOfRolls(1);
     }
 
-    public int score() {
+    int score() {
         return bonus() + scoreOfRolls(size()) + nextOf(Frame::score);
     }
 
