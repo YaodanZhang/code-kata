@@ -16,26 +16,31 @@ public class Frame {
     private Frame next;
     private Frame previous;
 
-    public void roll(int roll) {
-        rolls.add(roll);
+    public Frame roll(int roll) {
+        Frame frame = this;
+        if (isFinished()) {
+            frame = startNextFrame();
+        }
+        frame.rolls.add(roll);
+        return frame;
     }
 
     public int firstRoll() {
         return scoreOfRolls(1);
     }
 
-    public Frame startNextFrame() {
+    public int score() {
+        return bonus() + scoreOfRolls(size()) + nextOf(Frame::score);
+    }
+
+    private Frame startNextFrame() {
         next = new Frame();
         next.previous = this;
         return next;
     }
 
-    public boolean isFinished() {
+    private boolean isFinished() {
         return index() < 10 && (size() == 2 || isStrike());
-    }
-
-    public int score() {
-        return bonus() + scoreOfRolls(size()) + nextOf(Frame::score);
     }
 
     private int bonus() {

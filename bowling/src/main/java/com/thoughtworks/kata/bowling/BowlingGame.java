@@ -23,10 +23,7 @@ public class BowlingGame {
         Frame headFrame = frame;
 
         for (char roll : rolls.toCharArray()) {
-            if (frame.isFinished()) {
-                frame = frame.startNextFrame();
-            }
-            frame.roll(SCORES.get(roll).apply(frame.firstRoll()));
+            frame = frame.roll(SCORES.get(roll).apply(frame.firstRoll()));
         }
 
         return headFrame.score();
