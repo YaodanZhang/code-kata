@@ -11,6 +11,7 @@ class Frame {
     static final int FULL_SCORE = 10;
     private static final int STRIKE_BONUS_ROLLS = 2;
     private static final int SPARE_BONUS_ROLLS = 1;
+    private static final int MAX_ROUND = 10;
 
     private final List<Integer> rolls = newArrayList();
     private Frame next;
@@ -40,7 +41,7 @@ class Frame {
     }
 
     private boolean isFinished() {
-        return index() < 10 && (size() == 2 || isStrike());
+        return index() < MAX_ROUND && (size() == 2 || isStrike());
     }
 
     private int bonus() {
