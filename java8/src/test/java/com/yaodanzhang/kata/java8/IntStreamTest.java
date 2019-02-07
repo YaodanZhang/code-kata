@@ -1,18 +1,20 @@
 package com.yaodanzhang.kata.java8;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
 import static com.yaodanzhang.kata.java8.IntStream.range;
 import static com.yaodanzhang.kata.java8.Optional.of;
+import static java.util.Arrays.asList;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Collections;
+import java.util.Comparator;
+import org.junit.Before;
+import org.junit.Test;
 
 public class IntStreamTest {
 
@@ -20,38 +22,45 @@ public class IntStreamTest {
     private CallControl callControl;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         stream = range(1, 100);
         callControl = mock(CallControl.class);
     }
 
     @Test
-    public void testFirst() throws Exception {
+    public void should_sth() {
+        asList("1", "2").stream().sorted(Comparator.reverseOrder());
+
+        Collections.sort(asList());
+    }
+
+    @Test
+    public void testFirst() {
         assertThat(stream.first(), is(of(1)));
     }
 
     @Test
-    public void testReduce() throws Exception {
+    public void testReduce() {
         assertThat(stream.reduce((x, y) -> x + y, 0), is(5050));
     }
 
     @Test
-    public void testMap() throws Exception {
+    public void testMap() {
         assertThat(stream.map(x -> x * 3).first(), is(of(3)));
     }
 
     @Test
-    public void testLimit() throws Exception {
+    public void testLimit() {
         assertThat(stream.limit(3).consume().size(), is(3));
     }
 
     @Test
-    public void testFilter() throws Exception {
+    public void testFilter() {
         assertThat(stream.filter(x -> x % 3 == 0).first(), is(of(3)));
     }
 
     @Test
-    public void testLazyMap() throws Exception {
+    public void testLazyMap() {
         stream.map(x -> {
             callControl.call();
             return x * 3;
@@ -60,7 +69,7 @@ public class IntStreamTest {
     }
 
     @Test
-    public void testLazyLimit() throws Exception {
+    public void testLazyLimit() {
         stream.map(x -> {
             callControl.call();
             return x;
@@ -70,7 +79,7 @@ public class IntStreamTest {
     }
 
     @Test
-    public void testLazyFilter() throws Exception {
+    public void testLazyFilter() {
         stream.filter(x -> {
             callControl.call();
             return x % 3 == 0;
