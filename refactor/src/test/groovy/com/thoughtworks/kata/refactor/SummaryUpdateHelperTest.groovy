@@ -4,10 +4,10 @@ import spock.lang.Specification
 import spock.lang.Unroll
 
 import static com.google.common.collect.Maps.newHashMap
-import static SummaryUpdateHelperTest.SummaryType.BLANK
-import static SummaryUpdateHelperTest.SummaryType.EMPTY
-import static SummaryUpdateHelperTest.SummaryType.ORIGINAL
-import static SummaryUpdateHelperTest.SummaryType.UPDATED
+import static com.thoughtworks.kata.refactor.SummaryUpdateHelperTest.SummaryType.BLANK
+import static com.thoughtworks.kata.refactor.SummaryUpdateHelperTest.SummaryType.EMPTY
+import static com.thoughtworks.kata.refactor.SummaryUpdateHelperTest.SummaryType.ORIGINAL
+import static com.thoughtworks.kata.refactor.SummaryUpdateHelperTest.SummaryType.UPDATED
 import static com.thoughtworks.kata.refactor.TrustIndicator.TRUSTED
 import static com.thoughtworks.kata.refactor.TrustIndicator.UNTRUSTED
 

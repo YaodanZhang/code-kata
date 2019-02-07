@@ -9,8 +9,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.Comparator;
 import org.junit.Before;
@@ -93,15 +91,5 @@ public class IntStreamTest {
         assertThat(stream.filter(x -> x % 2 == 0)
                 .filter(x -> x % 3 == 0)
                 .first(), is(of(6)));
-    }
-
-    @Test
-    public void should_() throws FileNotFoundException {
-        FileInputStream s1 = new FileInputStream
-                ("/Users/twer/Documents/development/code/code-kata/build.gradle");
-        FileInputStream s2 = new FileInputStream
-                ("/Users/twer/Documents/development/code/code-kata/build.gradle");
-        System.out.println(s1);
-        System.out.println(s2);
     }
 }
