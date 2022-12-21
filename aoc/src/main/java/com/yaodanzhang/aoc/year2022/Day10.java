@@ -10,12 +10,12 @@ import com.yaodanzhang.aoc.input.AllLines;
 import java.nio.file.Path;
 import java.util.List;
 
-public class Day9 implements Puzzle<Integer> {
+public class Day10 implements Puzzle<Integer> {
 
   private static final Splitter SPLITTER = Splitter.on(" ").trimResults().omitEmptyStrings();
   private final List<String> input;
 
-  Day9(Path inputFile) {
+  Day10(Path inputFile) {
     this.input = new AllLines(inputFile).read();
   }
 

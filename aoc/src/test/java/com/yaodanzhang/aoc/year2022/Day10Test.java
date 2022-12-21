@@ -6,13 +6,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class Day9Test {
+class Day10Test {
 
-  private Day9 puzzle;
+  private Day10 puzzle;
 
   @BeforeEach
   void setUp() {
-    puzzle = new Day9(inputOf(this.getClass()));
+    puzzle = new Day10(inputOf(this.getClass()));
   }
 
   @Test
@@ -27,7 +27,7 @@ class Day9Test {
 
   @Test
   void should_print_out_result() {
-    Day9 realPuzzle = new Day9(inputOf(Day9.class));
+    Day10 realPuzzle = new Day10(inputOf(Day10.class));
     System.out.println(realPuzzle.part1Result());
     System.out.println(realPuzzle.part2Result());
   }
