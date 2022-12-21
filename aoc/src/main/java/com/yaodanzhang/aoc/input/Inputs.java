@@ -10,11 +10,15 @@ public final class Inputs {
 
   private Inputs() {}
 
-  @SuppressWarnings("ConstantConditions")
   public static <T> Path inputOf(Class<T> puzzleClass) {
+    return inputOf(puzzleClass, "{0}.input.txt");
+  }
+
+  @SuppressWarnings("ConstantConditions")
+  public static <T> Path inputOf(Class<T> puzzleClass, String filenamePattern) {
     try {
       return of(
-          puzzleClass.getResource(format("{0}.input.txt", puzzleClass.getSimpleName().toLowerCase())).toURI());
+          puzzleClass.getResource(format(filenamePattern, puzzleClass.getSimpleName().toLowerCase())).toURI());
     } catch (URISyntaxException e) {
       throw new RuntimeException(e);
     }
