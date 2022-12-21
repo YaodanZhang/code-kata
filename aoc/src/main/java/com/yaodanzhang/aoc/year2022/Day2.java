@@ -1,8 +1,8 @@
 package com.yaodanzhang.aoc.year2022;
 
+import static com.google.common.base.Splitter.on;
 import static com.google.common.collect.Lists.newArrayList;
 
-import com.google.common.base.Splitter;
 import com.yaodanzhang.aoc.Puzzle;
 import com.yaodanzhang.aoc.input.AllLines;
 import com.yaodanzhang.aoc.input.GroupByInLineSplitter;
@@ -18,7 +18,7 @@ public class Day2 implements Puzzle<Integer> {
   private final GroupByInLineSplitter input;
 
   Day2(Path inputFile) {
-    this.input = new GroupByInLineSplitter(new AllLines(inputFile), Splitter.on(" "));
+    this.input = new GroupByInLineSplitter(new AllLines(inputFile), on(" "));
   }
 
   @Override
