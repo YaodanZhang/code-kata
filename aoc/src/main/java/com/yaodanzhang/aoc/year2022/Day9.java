@@ -82,7 +82,7 @@ public class Day9 implements Puzzle<Integer> {
       return new Coordinate(0, 0);
     }
 
-    boolean isTooFar(Coordinate that) {
+    private boolean isTooFar(Coordinate that) {
       return abs(this.x - that.x) > 1 || abs(this.y - that.y) > 1;
     }
 
