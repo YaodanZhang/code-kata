@@ -1,4 +1,6 @@
 fileignoreconfig:
+- filename: aoc/src/main/java/com/yaodanzhang/aoc/year2022/Day11.java
+  checksum: 2a71ac7bebbc4bc50eea912349c9322e4bebfda0a5e50b425ada8523e88e85b4
 - filename: aoc/src/main/resources/com/yaodanzhang/aoc/year2022/day8.input.txt
   checksum: a974e581ba2addb8be49da09828752a301050db9c027e9d05d0d0bc81bcb8dcc
 version: "1.0"
