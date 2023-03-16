@@ -20,6 +20,7 @@ java {
 
 dependencies {
     implementation("com.google.guava:guava:31.1-jre")
+    implementation("org.apache.commons:commons-lang3:3.12.0")
 
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")
     testImplementation("org.mockito:mockito-core:4.8.0")
