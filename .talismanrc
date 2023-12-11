@@ -4,3 +4,4 @@ fileignoreconfig:
 - filename: aoc/src/main/resources/com/yaodanzhang/aoc/year2022/day8.input.txt
   checksum: a974e581ba2addb8be49da09828752a301050db9c027e9d05d0d0bc81bcb8dcc
 version: "1.0"
+threshold: medium
