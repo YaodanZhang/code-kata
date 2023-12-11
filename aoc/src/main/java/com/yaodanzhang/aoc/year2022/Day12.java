@@ -8,6 +8,7 @@ import static java.util.stream.Collectors.toList;
 
 import com.google.common.base.MoreObjects;
 import com.yaodanzhang.aoc.Puzzle;
+import com.yaodanzhang.aoc.algo.Coordinate;
 import com.yaodanzhang.aoc.input.AllLines;
 import com.yaodanzhang.aoc.input.GroupByChar;
 import com.yaodanzhang.aoc.input.Pair;
@@ -100,10 +101,10 @@ public class Day12 implements Puzzle<Integer> {
         GraphNode node = nodes.get(y).get(x);
         Arrays.stream(Move.values()).filter(it -> {
           Coordinate next = it.from(node.coordinate);
-          return next.x > -1
-              && next.y > -1
-              && next.y < input.size()
-              && next.x < input.get(next.y).size()
+          return next.getX() > -1
+              && next.getY() > -1
+              && next.getY() < input.size()
+              && next.getX() < input.get(next.getY()).size()
               && getHeight(next) - getHeight(node.coordinate) <= 1;
         }).forEach(it -> node.addChild(coordinateGraphNodeMap.get(it.from(node.coordinate))));
       }
@@ -131,7 +132,7 @@ public class Day12 implements Puzzle<Integer> {
   }
 
   private char getHeight(Coordinate point) {
-    char height = input.get(point.y).get(point.x);
+    char height = input.get(point.getY()).get(point.getX());
     if (height == 'S') {
       return 'a';
     }
@@ -165,13 +166,6 @@ public class Day12 implements Puzzle<Integer> {
         .forEach(node -> node.distance = MAX_VALUE);
   }
 
-  private record Coordinate(int x, int y) {
-
-    private int arrayIndex(List<List<Character>> input) {
-      return y * input.get(0).size() + x;
-    }
-  }
-
   private enum Move {
     R(new Pair<>(x -> x + 1, y -> y)),
     L(new Pair<>(x -> x - 1, y -> y)),
@@ -186,8 +180,8 @@ public class Day12 implements Puzzle<Integer> {
 
     Coordinate from(Coordinate that) {
       return new Coordinate(
-          movement.left().applyAsInt(that.x),
-          movement.right().applyAsInt(that.y)
+          movement.left().applyAsInt(that.getX()),
+          movement.right().applyAsInt(that.getY())
       );
     }
   }
